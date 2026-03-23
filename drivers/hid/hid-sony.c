@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 /*
- *  HID driver for Sony / PS2 / PS3 / PS4 BD devices.
+ *  HID driver for Sony BD / PS2 / PS3 / PS4 / PS5 devices and compatible Wii instruments
  *
  *  Copyright (c) 1999 Andreas Gal
  *  Copyright (c) 2000-2005 Vojtech Pavlik <vojtech@suse.cz>
@@ -2384,15 +2384,51 @@ static const struct hid_device_id sony_devices[] = {
 	/* Guitar Hero Live PS3 and Wii U guitar dongles */
 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3WIIU_GHLIVE),
 		.driver_data = GHL_GUITAR_PS3WIIU | GH_GUITAR_TILT | INSTRUMENT },
-	/* Guitar Hero PC guitar dongles */
+	/* Guitar Hero PC guitar dongle */
 	{ HID_USB_DEVICE(USB_VENDOR_ID_REDOCTANE, USB_DEVICE_ID_REDOCTANE_GUITAR_DONGLE),
 		.driver_data = GH_GUITAR_TILT | INSTRUMENT },
-	/* Guitar Hero PS3 guitar dongles */
+	/* Guitar Hero PS3 guitar dongle */
 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3_GH_GUITAR),
 		.driver_data = GH_GUITAR_TILT | INSTRUMENT },
-	/* Guitar Hero Live PS4 guitar dongles */
+	/* Guitar Hero PS3 drum dongle */
+	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3_GH_DRUMS),
+		.driver_data = INSTRUMENT },
+	/* Guitar Hero Live PS4 guitar dongle */
 	{ HID_USB_DEVICE(USB_VENDOR_ID_REDOCTANE, USB_DEVICE_ID_REDOCTANE_PS4_GHLIVE_DONGLE),
 		.driver_data = GHL_GUITAR_PS4 | GH_GUITAR_TILT | INSTRUMENT },
+	/* Rock Band instruments for the Wii use the hid-sony protocol. */
+	/* Rock Band 1 Wii instruments */
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB1_GUITAR),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB1_DRUMS),
+		.driver_data = INSTRUMENT },
+	/* Rock Band 2 Wii instruments */
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB2_GUITAR),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB2_DRUMS),
+		.driver_data = INSTRUMENT },
+	/* Rock Band 3 Wii instruments */
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_MPA_DRUMS_MODE),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_MUSTANG_GUITAR),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_SQUIRE_GUITAR),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_MPA_MUSTANG_MODE),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_MPA_SQUIRE_MODE),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_KEYBOARD),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HARMONIX, USB_DEVICE_ID_HARMONIX_WII_RB3_MPA_KEYBOARD_MODE),
+		.driver_data = INSTRUMENT },
+	/* Rock Band PS3 instruments */
+	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3_RB_GUITAR),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3_RB_DRUMS),
+		.driver_data = INSTRUMENT },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY_RHYTHM, USB_DEVICE_ID_SONY_PS3_RB3_MPA_DRUMS_MODE),
+		.driver_data = INSTRUMENT },
 	/* Rock Band 4 PS4 guitars */
 	{ HID_USB_DEVICE(USB_VENDOR_ID_PDP, USB_DEVICE_ID_PDP_PS4_RIFFMASTER),
 		.driver_data = RB4_GUITAR_PS4_USB | INSTRUMENT },
@@ -2446,5 +2482,5 @@ static void __exit sony_exit(void)
 module_init(sony_init);
 module_exit(sony_exit);
 
-MODULE_DESCRIPTION("HID driver for Sony / PS2 / PS3 / PS4 BD devices");
+MODULE_DESCRIPTION("HID driver for Sony BD / PS2 / PS3 / PS4 / PS5 devices and compatible Wii instruments");
 MODULE_LICENSE("GPL");
